@@ -24,7 +24,7 @@ const createRole = asyncHandler(async (req, res) => {
 
 const getRolebyId = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.param;
+    const { id } = req.params;
     const role = await Role.findById(id);
     if (!role) {
       return res.status(404).json({ message: "can't find role" });
