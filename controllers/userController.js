@@ -1,7 +1,9 @@
 const User = require("../models/userModels");
 const asyncHandler = require("express-async-handler");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const customId = require("custom-id");
+const { json } = require("express");
 
 const register = asyncHandler(async (req, res) => {
   const {
@@ -67,19 +69,18 @@ const login = asyncHandler(async (req, res) => {
   try {
     const mail = await User.findOne({ email });
     const uname = await User.findOne({ username });
-    if (!mail || !uname) {
+    if (!uname) {
       return res.status(404).json({ message: "Can't find user" });
     }
 
-    const passwordMatch = await User.comparePassword(bcrypt.hash(password, 10));
+    const passwordMatch = await bcrypt.compareSync(password, uname.password);
     if (!passwordMatch) {
       return res.status(401).json({ message: "Incorrect password" });
     }
-
     const token = jwt.sign({ userId: User._id }, process.env.SECRET_KEY, {
       expiresIn: "1 hour",
     });
-    res.json({ token });
+    return res.json({ token });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

@@ -3,6 +3,7 @@ const {
   register,
   changePassword,
   editUser,
+  login,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -10,6 +11,6 @@ const router = express.Router();
 router.post("/register", register);
 router.put("/changePassword", changePassword);
 router.put("/editUser", editUser);
-router.post("login", login);
+router.post("/login", login);
 
 module.exports = router;

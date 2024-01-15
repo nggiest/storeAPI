@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const roleRoutes = require("./routers/roleRouters");
 const userRoutes = require("./routers/userRouters");
+const authRoutes = require("./routers/authRouters");
 
 // app.use("/", (req, res) => {
 //   res.send("hello world");
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use("/api/roles", roleRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 mongoose
   .connect(mongo_url)
