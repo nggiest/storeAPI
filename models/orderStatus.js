@@ -14,13 +14,14 @@ const orderStatusSchema = mongoose.Schema({
     type: Boolean,
     default: 0,
   },
-  createdDate: {
+  createdAt: {
     type: Date,
     required: true,
+    default: Date.now(),
   },
-  updatedDate: {
+  updatedAt: {
     type: Date,
-    required: true,
+    default: null,
   },
 });
 

@@ -36,13 +36,14 @@ const userSchema = mongoose.Schema(
     phoneNumber: {
       type: String,
     },
-    createdDate: {
+    createdAt: {
       type: Date,
       required: true,
+      default: Date.now(),
     },
-    updatedDate: {
+    updatedAt: {
       type: Date,
-      required: true,
+      default: null,
     },
   },
   {

@@ -11,13 +11,18 @@ const roleSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    createdDate: {
-      type: Date,
-      required: true,
+    deleted: {
+      type: Boolean,
+      default: false,
     },
-    updatedDate: {
+    createdAt: {
       type: Date,
       required: true,
+      default: Date.now(),
+    },
+    updatedAt: {
+      type: Date,
+      default: null,
     },
   },
   {

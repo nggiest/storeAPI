@@ -17,15 +17,21 @@ const paymentTypeSchema = mongoose.Schema(
     },
     deleted: {
       type: Boolean,
-      default: 0,
+      default: false,
     },
-    createdDate: {
+    active: {
+      type: Boolean,
+      require: true,
+      default: true,
+    },
+    createdAt: {
       type: Date,
       required: true,
+      default: Date.now(),
     },
-    updatedDate: {
+    updatedAt: {
       type: Date,
-      required: true,
+      default: null,
     },
   },
   {

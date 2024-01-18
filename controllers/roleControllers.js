@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 const getRole = asyncHandler(async (req, res) => {
   try {
     const role = await Role.find();
-    if (!role) {
+    if (role.length === 0) {
       return res.status(400).json({ message: "Empty Data" });
     }
     return res.status(200).json(role);
@@ -37,6 +37,7 @@ const getRolebyId = asyncHandler(async (req, res) => {
 
 const editRole = asyncHandler(async (req, res) => {
   try {
+    req.body.updatedAt = new Date();
     const { id } = req.params;
     const role = await Role.findByIdAndUpdate(id);
     if (!role) {
@@ -52,7 +53,10 @@ const editRole = asyncHandler(async (req, res) => {
 const deleteRole = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const role = await Role.findByIdAndDelete(id);
+    const role = await Role.findByIdAndUpdate(id, {
+      deleted: true,
+      updatedAt: new Date(),
+    });
     if (!role) {
       return res.status(404).json({ message: "can't find role" });
     }
