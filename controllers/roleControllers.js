@@ -37,7 +37,7 @@ const getRolebyId = asyncHandler(async (req, res) => {
 
 const editRole = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.param;
+    const { id } = req.params;
     const role = await Role.findByIdAndUpdate(id);
     if (!role) {
       return res.status(404).json({ message: "can't find role" });
@@ -51,7 +51,7 @@ const editRole = asyncHandler(async (req, res) => {
 
 const deleteRole = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.param;
+    const { id } = req.params;
     const role = await Role.findByIdAndDelete(id);
     if (!role) {
       return res.status(404).json({ message: "can't find role" });

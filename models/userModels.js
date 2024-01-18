@@ -36,6 +36,14 @@ const userSchema = mongoose.Schema(
     phoneNumber: {
       type: String,
     },
+    createdDate: {
+      type: Date,
+      required: true,
+    },
+    updatedDate: {
+      type: Date,
+      required: true,
+    },
   },
   {
     timestamp: true,

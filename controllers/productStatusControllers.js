@@ -24,7 +24,7 @@ const createProductStatus = asyncHandler(async (req, res) => {
 
 const getProductStatusbyId = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.param;
+    const { id } = req.params;
     const productStatus = await ProductStatus.findById(id);
     if (!productStatus) {
       return res.status(404).json({ message: "can't find product status" });
@@ -51,11 +51,11 @@ const editProductStatus = asyncHandler(async (req, res) => {
 
 const deleteProductStatus = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.param;
+    const { id } = req.params;
     const productStatus = await ProductStatus.findByIdAndUpdate(id, {
-      deleted: 0,
+      deleted: 1,
     });
-    if (!productStatus.deleted) {
+    if (productStatus.deleted) {
       return res.status(404).json({ message: "can't find product status" });
     }
     return res.status(200).json(productStatus, { message: "Deleted Success" });

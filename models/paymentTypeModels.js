@@ -1,15 +1,23 @@
 const { Timestamp } = require("mongodb");
 const mongoose = require("mongoose");
 
-const roleSchema = mongoose.Schema(
+const paymentTypeSchema = mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    codeName: {
+    accountName: {
       type: String,
       required: true,
+    },
+    accountNumber: {
+      type: String,
+      required: true,
+    },
+    deleted: {
+      type: Boolean,
+      default: 0,
     },
     createdDate: {
       type: Date,
@@ -25,6 +33,6 @@ const roleSchema = mongoose.Schema(
   }
 );
 
-const Role = mongoose.model("Role", roleSchema);
+const PaymentType = mongoose.model("PaymentType", paymentTypeSchema);
 
-module.exports = Role;
+module.exports = PaymentType;

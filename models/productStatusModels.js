@@ -11,9 +11,21 @@ const productStatusSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     deleted: {
       type: Boolean,
-      default: 1,
+      default: 0,
+    },
+    createdDate: {
+      type: Date,
+      required: true,
+    },
+    updatedDate: {
+      type: Date,
+      required: true,
     },
   },
   {
