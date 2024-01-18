@@ -8,6 +8,7 @@ const userRoutes = require("./routers/userRouters");
 const authRoutes = require("./routers/authRouters");
 const productStatusRoutes = require("./routers/productStatusRouters");
 const paymentTypeRoutes = require("./routers/paymentTypeRouters");
+const orderStatusRoutes = require("./routers/orderStatusRouters");
 
 // app.use("/", (req, res) => {
 //   res.send("hello world");
@@ -19,11 +20,12 @@ const mongo_url = process.env.MONGO_URI;
 
 app.use(express.json());
 
-app.use("/api/roles", roleRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/productStatus", productStatusRoutes);
-app.use("/api/paymentType", paymentTypeRoutes);
+app.use("/roles", roleRoutes);
+app.use("/users", userRoutes);
+app.use("/auth", authRoutes);
+app.use("/productStatus", productStatusRoutes);
+app.use("/paymentType", paymentTypeRoutes);
+app.use("/orderStatus", orderStatusRoutes);
 
 mongoose
   .connect(mongo_url)

@@ -12,7 +12,7 @@ const orderStatusSchema = mongoose.Schema({
   },
   deleted: {
     type: Boolean,
-    default: 0,
+    default: false,
   },
   createdAt: {
     type: Date,
