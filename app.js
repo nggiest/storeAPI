@@ -11,14 +11,12 @@ const productStatusRoutes = require("./routers/productStatusRouters");
 const paymentTypeRoutes = require("./routers/paymentTypeRouters");
 const orderStatusRoutes = require("./routers/orderStatusRouters");
 const categoryProductRoutes = require("./routers/categoryProductRouters");
-// app.use("/", (req, res) => {
-//   res.send("hello world");
-// });
+
 moment.tz.setDefault("Asia/Bangkok");
 
-const port = process.env.PORT || 3030;
+const port = process.env.PORT;
 const mongo_url =
-  "mongodb+srv://admin:admin123@storeapi.6inxh3i.mongodb.net/?retryWrites=true&w=majority&appName=storeAPI";
+  "mongodb+srv://root:admin123@cluster0.wcbxirb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 app.use(express.json());
 app.use(cors());

@@ -5,6 +5,10 @@ const categoryProductSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  code: {
+    type: String,
+    required: true,
+  },
   deleted: {
     type: Boolean,
     default: false,
